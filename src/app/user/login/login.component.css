@@ -1,0 +1,57 @@
+.login-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5px;
+  margin-bottom: 0;
+}
+
+.login-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-card {
+  padding: 6px;
+  background-color: rgba(207,235,245,0.61);
+}
+
+mat-card-title {
+  font-weight: bolder;
+  margin-bottom: 4px;
+  padding-left: 4px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+button {
+  width: 100%;
+}
+
+.routerLinks {
+  margin-top: 4px;
+  text-align: center;
+}
+
+.register {
+  color: rgb(37 99 235);
+  cursor: pointer;
+}
+
+.register:hover {
+  color: rgb(22, 60, 142);
+}
+
+.forgot-password {
+  color: rgb(37 99 235);
+  cursor: pointer;
+}
+
+.forgot-password:hover {
+  color: rgb(22, 60, 142);
+}
