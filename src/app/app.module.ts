@@ -1,27 +1,30 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from "@angular/common/http";
-import { LoginFormComponent } from './login/login-form/login-form.component';
-import { FormsModule } from "@angular/forms";
-import { LoginService } from "./login/login.service";
-import { LoginComponent } from './login/login.component';
-import { RegistrationFormComponent } from './login/registration-form/registration-form.component';
-import {AppRoutingModule} from "./app.routes";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {ApiInterceptorService} from "./shared/services/api-interceptor.service";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {UserModule} from "./user/user.module";
 
 @NgModule({
   declarations: [
-    LoginFormComponent,
-    LoginComponent,
-    RegistrationFormComponent,
+    AppComponent
   ],
   imports: [
-    AppComponent,
-    BrowserModule,
+    UserModule,
     HttpClientModule,
-    FormsModule
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
-  providers: [LoginService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
