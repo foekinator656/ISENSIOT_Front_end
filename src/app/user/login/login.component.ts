@@ -32,6 +32,11 @@ export class LoginComponent {
     );
   }
 
+  public getUser() {
+    console.log(this.loginService.getToken())
+    this.loginService.getUser().subscribe(user => console.log(user));
+  }
+
   public logout () {
     this.loginService.logout();
   }

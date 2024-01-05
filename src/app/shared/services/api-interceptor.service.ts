@@ -8,6 +8,7 @@ import { environment } from "../../../environments/environment";
   providedIn: 'root'
 })
 export class ApiInterceptorService implements HttpInterceptor {
+
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
