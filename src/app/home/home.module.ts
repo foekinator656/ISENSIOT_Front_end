@@ -21,7 +21,10 @@ import { BatchItemComponent } from "./batch/batch-item/batch-item.component";
   ],
   exports: [],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterLink,
+    MatExpansionModule,
+    FaIconComponent
   ]
 })
 export class HomeModule { }
