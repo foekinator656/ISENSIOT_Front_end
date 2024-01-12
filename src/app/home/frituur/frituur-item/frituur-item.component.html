@@ -1,0 +1,12 @@
+<div class="frituur-container">
+  <div class="frituur-item">
+    <div class="frituur-details">
+      <h4>Id: {{ frituur.id }}</h4>
+      <h4>Oil volume is: {{ frituur.oilVolume }}</h4>
+      <h4>Pan volume is: {{ frituur.panVolume }}</h4>
+      <h4>Pan count: {{ frituur.panCount }}</h4>
+    </div>
+
+    <fa-icon [icon]="faArrowRight" [routerLink]="['/home', locationId, frituur.id]"></fa-icon>
+  </div>
+</div>

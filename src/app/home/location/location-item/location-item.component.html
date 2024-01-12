@@ -1,0 +1,10 @@
+<div class="location-container">
+  <div class="location-item">
+    <div class="location-details">
+      <h4>Location id: {{ location.id }}</h4>
+      <h4>Location is: {{ location.name }}</h4>
+    </div>
+
+    <fa-icon [icon]="faArrowRight" [routerLink]="['/home', location.id]"></fa-icon>
+  </div>
+</div>

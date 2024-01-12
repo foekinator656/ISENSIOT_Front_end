@@ -1,0 +1,9 @@
+<div class="alert alert-danger" *ngIf="locations.length <= 0">
+  <p><strong>Probleem met laden van Locations data!</strong></p>
+</div>
+
+<div class="locations">
+  <app-location-item *ngFor="let location of locations"
+                     [location]="location"
+  ></app-location-item>
+</div>
