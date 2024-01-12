@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FrituurListComponent } from './frituur-list.component';
+import { FrituurComponent } from './frituur.component';
 
 describe('FrituurListComponent', () => {
-  let component: FrituurListComponent;
-  let fixture: ComponentFixture<FrituurListComponent>;
+  let component: FrituurComponent;
+  let fixture: ComponentFixture<FrituurComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FrituurListComponent]
+      imports: [FrituurComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(FrituurListComponent);
+
+    fixture = TestBed.createComponent(FrituurComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

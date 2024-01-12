@@ -9,7 +9,7 @@ import { Login } from "../../shared/models/login.model";
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  username: string = 'apppeltaart@gmail.com';
+  username: string = 'appeltaart@gmail.com';
   password: string = 'appeltaart';
 
   constructor(
@@ -26,7 +26,7 @@ export class LoginComponent {
     this.loginService.login(login).subscribe(
       (response) => {
         if (response) {
-          console.log(response);
+          this.router.navigate(['/','home'])
         }
       }
     );
