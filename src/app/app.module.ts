@@ -9,6 +9,7 @@ import { UserModule } from "./user/user.module";
 import { SharedModule } from "./shared/shared.module";
 import { HomeModule } from "./home/home.module";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { GraphModule } from "./graph/graph.module";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    GraphModule
   ],
   providers: [
     {
