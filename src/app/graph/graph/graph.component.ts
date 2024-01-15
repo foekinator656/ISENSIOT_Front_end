@@ -13,7 +13,7 @@ export class GraphComponent {
     animationEnabled: true,
     zoomEnabled: true,
     title: {
-      text: "Market Capitalization of ACME Corp"
+      text: "Temp data Test ISENSIOT"
     },
     axisY: {
       labelFormatter: (e: any) => {
@@ -29,8 +29,6 @@ export class GraphComponent {
     },
     data: [{
       type: "line",
-      xValueFormatString: "YYYY",
-      yValueFormatString: "$#,###.##",
       dataPoints: [
         { x: new Date(1980, 0, 1), y: 2500582120 },
         { x: new Date(1981, 0, 1), y: 2318922620 },
@@ -74,4 +72,6 @@ export class GraphComponent {
       ]
     }]
   }
+
+
 }
