@@ -24,7 +24,7 @@ export class DataService {
     return this.http.get<Frituur[]>(`/api/v1/frituur/${id}`);
   }
 
-  public getTimeRecordings(id: number): Observable<TimeRecording[]> {
+  public getTimeRecordings(id: string): Observable<TimeRecording[]> {
     return this.http.get<TimeRecording[]>(`/api/v1/timerecording/${id}`);
   }
 }

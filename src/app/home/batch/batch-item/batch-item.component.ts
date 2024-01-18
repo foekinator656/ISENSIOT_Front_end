@@ -10,6 +10,11 @@ import {Router} from "@angular/router";
   styleUrl: './batch-item.component.css'
 })
 export class BatchItemComponent {
+
+  constructor(
+    public router: Router
+  ) { }
+
   @Input()
   public batches!: Batch;
     protected readonly faArrowRight = faArrowRight;
