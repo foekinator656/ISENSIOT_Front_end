@@ -1,0 +1,54 @@
+.batches-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  margin-left: 12px;
+}
+
+.batches-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+}
+
+.batches-item h4 {
+  margin: 0;
+  font-weight: bolder;
+}
+
+
+.batches-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+fa-icon {
+  display: flex;
+  background-color: black;
+  color: white;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 50px;
+  padding: 5px;
+  align-self: center;
+  height: 65px;
+}
+
+fa-icon:hover {
+  background-color: gray;
+  border-color: gray;
+}
+
+fa-icon:checked {
+  background-color: lightgray;
+  border-color: lightgray;
+}

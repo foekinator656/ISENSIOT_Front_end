@@ -1,10 +1,9 @@
-<div class="row">
-  <div class="col-xs-12">
-    <div class="alert alert-danger" *ngIf="true">
-      <p><strong>Probleem met laden van batch data!</strong></p>
-    </div>
-    <app-batch-item *ngFor="let batch of batches"
-                      [batches]="batch"
-    ></app-batch-item>
-  </div>
+<div class="alert alert-danger" *ngIf="batches.length <= 0">
+  <p><strong>Probleem met laden van batch data!</strong></p>
+</div>
+<h1 style="padding: 1%">Alle bekende frituuren: </h1>
+<div class="batches">
+  <app-batch-item *ngFor="let batch of batches"
+                  [batches]="batch"
+  ></app-batch-item>
 </div>

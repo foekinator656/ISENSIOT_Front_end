@@ -1,5 +1,9 @@
-<div class="container">
-  <a [routerLink]="'/'+ batches.id" class="location-item">
-    <h4>Location is: {{ batches.name }}</h4>
-  </a>
+<div class="batches-container">
+  <div class="batches-item">
+    <div class="batches-details">
+      <h4>Id: {{ batches.id }}</h4>
+      <h4>batch volume is: {{ batches.name}}</h4>
+    </div>
+    <fa-icon [icon]="faArrowRight" [routerLink]="[this.router.url, batches.id]"></fa-icon>
+  </div>
 </div>

@@ -9,7 +9,7 @@ import { UserModule } from "./user/user.module";
 import { SharedModule } from "./shared/shared.module";
 import { HomeModule } from "./home/home.module";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { GraphModule } from "./graph/graph.module";
+import { BatchInfoModule } from "./batch-info/batch-info.module";
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { GraphModule } from "./graph/graph.module";
     AppRoutingModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
-    GraphModule
+    BatchInfoModule
   ],
   providers: [
     {
