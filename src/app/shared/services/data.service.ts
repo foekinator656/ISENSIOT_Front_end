@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Location } from "../models/location.model";
 import { Frituur } from "../models/frituur.model";
 import { TimeRecording } from "../models/timeRecording.model";
@@ -27,4 +27,10 @@ export class DataService {
   public getTimeRecordings(id: string): Observable<TimeRecording[]> {
     return this.http.get<TimeRecording[]>(`/api/v1/timerecording/${id}`);
   }
+
+  public getIpAdress(id: string): Observable<string> {
+    return this.http.get(`/api/v1/frituur/getip/${id}`, {responseType: 'text'})
+  }
+
+
 }

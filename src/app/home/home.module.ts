@@ -9,6 +9,7 @@ import { FrituurComponent } from "./frituur/frituur.component";
 import { FrituurItemComponent } from "./frituur/frituur-item/frituur-item.component";
 import { BatchComponent } from "./batch/batch.component";
 import { BatchItemComponent } from "./batch/batch-item/batch-item.component";
+import {ControlComponent} from "./batch/control/control.component";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BatchItemComponent } from "./batch/batch-item/batch-item.component";
     FrituurComponent,
     FrituurItemComponent,
     BatchComponent,
-    BatchItemComponent
+    BatchItemComponent,
+    ControlComponent
   ],
   exports: [],
   imports: [

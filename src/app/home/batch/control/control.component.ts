@@ -1,12 +1,66 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {DataService} from "../../../shared/services/data.service";
+import {ActivatedRoute} from "@angular/router";
+import {TimeRecording} from "../../../shared/models/timeRecording.model";
+import {interval, Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-control',
-  standalone: true,
-  imports: [],
   templateUrl: './control.component.html',
   styleUrl: './control.component.css'
 })
-export class ControlComponent {
+
+
+export class ControlComponent implements OnInit{
+  private socket!: WebSocket;
+  private chartWriter!: Subscription;
+  private batchId!: string;
+  chartData: { x: number; y: number; }[] = [];
+  chartData2: { x: number; y: number; }[] = [];
+
+  constructor(
+    private dataService: DataService,
+    private route: ActivatedRoute
+  ) {
+  }
+
+  createChartData(){
+    console.log("hallo")
+    // this.dataService.getTimeRecordings(this.batchId).subscribe(timeRecordings => {
+    //   timeRecordings.forEach(timeRecording => this.chartData.push({
+    //     x: timeRecording.timeRecordingWithBatches.time,
+    //     y: timeRecording.temperature
+    //   }))
+    //   timeRecordings.forEach(timeRecording => this.chartData2.push({
+    //     x: timeRecording.timeRecordingWithBatches.time,
+    //     y: timeRecording.viscosity
+    //   }))
+    // })
+  }
+
+  ngOnInit(): void {
+    // @ts-ignore
+    this.dataService.getIpAdress(this.route.snapshot.paramMap.get('id2')).subscribe( data =>{
+      console.log(data)
+      this.socket = new WebSocket("ws://"+data+":1234");
+      this.socket.addEventListener("open", (event) => {
+        this.socket.send("on")
+      });
+      this.socket.addEventListener("message", (event) => {
+        console.log("Message from server ", event.data);
+      });
+    })
+  }
+
+// todo receive ID from angular and write to local variabel.
+  on():void {
+    this.socket.send("on")
+    this.chartWriter = interval(100)
+      .subscribe((val) => { this.createChartData();});
+  }
+  off():void {
+    this.socket.send("off")
+    this.chartWriter.unsubscribe();
+  }
 
 }

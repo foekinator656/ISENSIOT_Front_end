@@ -34,7 +34,6 @@ export class BatchInfoComponent implements OnInit {
   goBack(){
     let strings: string[] = this.router.url.split("/");
     let url: string[] = ["/"+strings[1]+"/"+strings[2]+"/"+strings[3]]
-    console.log(url);
     this.router.navigate(url)
   }
 }
