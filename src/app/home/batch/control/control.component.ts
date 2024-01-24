@@ -25,7 +25,6 @@ export class ControlComponent implements OnInit{
   }
 
   createChartData(){
-    console.log("hallo")
     // this.dataService.getTimeRecordings(this.batchId).subscribe(timeRecordings => {
     //   timeRecordings.forEach(timeRecording => this.chartData.push({
     //     x: timeRecording.timeRecordingWithBatches.time,
@@ -39,24 +38,20 @@ export class ControlComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    // @ts-ignore
-    this.dataService.getIpAdress(this.route.snapshot.paramMap.get('id2')).subscribe( data =>{
-      console.log(data)
-      this.socket = new WebSocket("ws://"+data+":1234");
-      this.socket.addEventListener("open", (event) => {
-        this.socket.send("on")
-      });
-      this.socket.addEventListener("message", (event) => {
-        console.log("Message from server ", event.data);
-      });
-    })
+
   }
 
 // todo receive ID from angular and write to local variabel.
   on():void {
-    this.socket.send("on")
-    this.chartWriter = interval(100)
-      .subscribe((val) => { this.createChartData();});
+    // @ts-ignore
+    this.dataService.getIpAdress(this.route.snapshot.paramMap.get('id2')).subscribe( data =>{
+      this.socket = new WebSocket("ws://"+data+":1234");
+      this.socket.addEventListener("open", (event) => {
+        this.socket.send("on");
+        this.chartWriter = interval(1000)
+          .subscribe((val) => { this.createChartData();});
+        })
+      });
   }
   off():void {
     this.socket.send("off")
