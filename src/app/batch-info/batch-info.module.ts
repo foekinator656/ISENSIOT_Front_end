@@ -9,6 +9,9 @@ import {GraphComponent} from "./batch-info/graph/graph.component";
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    GraphComponent
   ]
 })
 export class BatchInfoModule { }

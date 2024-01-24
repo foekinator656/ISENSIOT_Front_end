@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { DataService } from "../../shared/services/data.service";
 import { TimeRecording } from "../../shared/models/timeRecording.model";
 import { ActivatedRoute, Router } from "@angular/router";
+import {GraphComponent} from "./graph/graph.component";
 
 @Component({
   selector: 'app-batch-info',
@@ -14,6 +15,9 @@ export class BatchInfoComponent implements OnInit {
   chartData2: { x: number; y: number; }[] = [];
   public batchId: string | null = this.route.snapshot.paramMap.get('id3');
 
+  @ViewChild('graph1') graph1!: GraphComponent;
+  @ViewChild('graph2') graph2!: GraphComponent;
+
   constructor(
     private dataService: DataService,
     private router: Router,
@@ -23,6 +27,8 @@ export class BatchInfoComponent implements OnInit {
   createChartData(timeRecordings: TimeRecording[]){
     timeRecordings.forEach(timeRecording => this.chartData.push({x: timeRecording.timeRecordingWithBatches.time, y: timeRecording.temperature}))
     timeRecordings.forEach(timeRecording => this.chartData2.push({x: timeRecording.timeRecordingWithBatches.time, y: timeRecording.viscosity}))
+    this.graph1.render()
+    this.graph2.render()
   }
 
   ngOnInit() {

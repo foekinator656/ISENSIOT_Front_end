@@ -10,6 +10,7 @@ import { FrituurItemComponent } from "./frituur/frituur-item/frituur-item.compon
 import { BatchComponent } from "./batch/batch.component";
 import { BatchItemComponent } from "./batch/batch-item/batch-item.component";
 import {ControlComponent} from "./batch/control/control.component";
+import {BatchInfoModule} from "../batch-info/batch-info.module";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {ControlComponent} from "./batch/control/control.component";
     CommonModule,
     RouterLink,
     MatExpansionModule,
-    FaIconComponent
+    FaIconComponent,
+    BatchInfoModule
   ]
 })
 export class HomeModule { }

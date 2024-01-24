@@ -1,4 +1,4 @@
 <button class="button-3" role="button" (click)="goBack()" >Return!</button>
 
-<app-graph [name]="'Viscositeit'" [datapoints]="this.chartData2" [xName]="'Tijd (seconden)'" [yName]="'Draai tijd (mili-seconden)'"> </app-graph>
-<app-graph [name]="'Temperatuur'" [datapoints]="this.chartData" [xName]="'Tijd (seconden)'" [yName]="'Temperatuur  (℃)'"> </app-graph>
+<app-graph #graph1 [name]="'Viscositeit'" [datapoints]="this.chartData2" [xName]="'Tijd (seconden)'" [yName]="'Draai tijd (mili-seconden)'"> </app-graph>
+<app-graph #graph2 [name]="'Temperatuur'" [datapoints]="this.chartData" [xName]="'Tijd (seconden)'" [yName]="'Temperatuur  (℃)'"> </app-graph>

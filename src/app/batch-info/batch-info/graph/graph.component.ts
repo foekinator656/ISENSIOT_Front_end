@@ -7,7 +7,7 @@ import {CanvasJS} from "@canvasjs/angular-charts";
   styleUrl: './graph.component.css'
 })
 // todo add onChange to change data when polling from server
-export class GraphComponent implements OnInit {
+export class GraphComponent {
   chart: any;
 
   @Input()
@@ -19,12 +19,7 @@ export class GraphComponent implements OnInit {
   @Input()
   public yName!: String;
 
-  ngOnInit() {
-    this.test();
-  }
-
-  async test(): Promise<void>{
-    await new Promise(f => setTimeout(f, 800));
+  render(){
     this.chart= new CanvasJS.Chart(this.name, {
       axisX: {
         display: true,
@@ -46,6 +41,6 @@ export class GraphComponent implements OnInit {
         }
       ]
     });
-    this.chart.render();
+    this.chart.render()
   }
 }
