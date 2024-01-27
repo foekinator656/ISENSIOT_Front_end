@@ -13,7 +13,6 @@ export class BatchComponent implements OnInit {
   batches: Batch[] = [];
   public frituurId: string | null = this.route.snapshot.paramMap.get('id');
 
-
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute

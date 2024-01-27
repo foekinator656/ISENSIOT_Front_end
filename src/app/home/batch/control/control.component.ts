@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {DataService} from "../../../shared/services/data.service";
 import {ActivatedRoute} from "@angular/router";
-import {TimeRecording} from "../../../shared/models/timeRecording.model";
 import {interval, Observable, Subscription} from "rxjs";
 import {GraphComponent} from "../../../batch-info/batch-info/graph/graph.component";
 
@@ -11,11 +10,12 @@ import {GraphComponent} from "../../../batch-info/batch-info/graph/graph.compone
   styleUrl: './control.component.css'
 })
 
-
 export class ControlComponent {
   private socket!: WebSocket;
   private chartWriter!: Subscription;
   private batchId!: string;
+  public color!: string;
+  public show: boolean = false
 
   @ViewChild('graph1') graph1!: GraphComponent;
   @ViewChild('graph2') graph2!: GraphComponent;
@@ -30,35 +30,35 @@ export class ControlComponent {
   }
 
   createChartData(){
-    console.log("test")
     this.dataService.getTimeRecordings(this.batchId).subscribe(timeRecordings => {
-      console.log(timeRecordings)
+      this.color = timeRecordings[0].colour
+      this.chartData = []
       timeRecordings.forEach(timeRecording => this.chartData.push({
         x: timeRecording.timeRecordingWithBatches.time,
         y: timeRecording.temperature
-      }))
+      }));
       timeRecordings.forEach(timeRecording => this.chartData2.push({
         x: timeRecording.timeRecordingWithBatches.time,
         y: timeRecording.viscosity
-      }))
-      this.graph1.render()
-      this.graph2.render()
+      }));
+      this.chartData2 = []
+      this.graph1.render();
+      this.graph2.render();
     })
   }
 
-
-// todo receive ID from angular and write to local variabel.
   on():void {
+    this.show = true;
     // @ts-ignore
-    this.dataService.getIpAdress(this.route.snapshot.paramMap.get('id2')).subscribe( data =>{
-      this.socket = new WebSocket("ws://"+data+":1234");
-      this.socket.addEventListener("message", (event) =>{
-        this.batchId = event.data
+    this.dataService.getIpAdress(this.route.snapshot.paramMap.get('id2')).subscribe( serverIp =>{
+      this.socket = new WebSocket("ws://"+serverIp+":1234");
+      this.socket.addEventListener("message", (message) =>{
+        this.batchId = message.data
       })
       this.socket.addEventListener("open", (event) => {
         this.socket.send("on");
         this.chartWriter = interval(3000)
-          .subscribe((val) => { this.createChartData();});
+          .subscribe((val) => {this.createChartData();});
         })
       });
   }
