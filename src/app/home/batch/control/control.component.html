@@ -1,1 +1,7 @@
-<p>control works!</p>
+<button class="button-3" role="button" (click)="on()" >on!</button>
+<button class="button-3" role="button" (click)="off()" >off!</button>
+
+<app-graph *ngIf="this.show" #graph1 [name]="'Viscositeit'" [datapoints]="this.chartData2" [xName]="'Tijd (seconden)'" [yName]="'Draai tijd (mili-seconden)'"> </app-graph>
+<app-graph *ngIf="this.show" #graph2 [name]="'Temperatuur'" [datapoints]="this.chartData" [xName]="'Tijd (seconden)'" [yName]="'Temperatuur  (℃)'"> </app-graph>
+<div [ngStyle]="{'background-color': this.color, 'width':'100px', 'margin':'10px 100px 10px 100px', 'border-radius':'10%'}" *ngIf="this.show"> colour: {{this.color}}  </div>
+<div [ngStyle]="{'width':'100px', 'margin':'10px 100px 10px 100px', 'border-radius':'10%'}" *ngIf="this.show"> colour: {{this.color}}  </div>

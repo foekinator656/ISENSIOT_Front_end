@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Location } from "../models/location.model";
 import { Frituur } from "../models/frituur.model";
+import { TimeRecording } from "../models/timeRecording.model";
 import { Batch } from "../../shared/models/batch.model";
 import { Observable } from "rxjs";
 @Injectable({
@@ -22,4 +23,14 @@ export class DataService {
   public getFrituursByCurrentLocation(id: number): Observable<Frituur[]> {
     return this.http.get<Frituur[]>(`/api/v1/frituur/${id}`);
   }
+
+  public getTimeRecordings(id: string): Observable<TimeRecording[]> {
+    return this.http.get<TimeRecording[]>(`/api/v1/timerecording/${id}`);
+  }
+
+  public getIpAdress(id: string): Observable<string> {
+    return this.http.get(`/api/v1/frituur/getip/${id}`, {responseType: 'text'})
+  }
+
+
 }
