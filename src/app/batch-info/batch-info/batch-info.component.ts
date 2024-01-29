@@ -13,6 +13,7 @@ export class BatchInfoComponent implements OnInit {
 
   chartData: { x: number; y: number; }[] = [];
   chartData2: { x: number; y: number; }[] = [];
+  color!: string;
   public batchId: string | null = this.route.snapshot.paramMap.get('id3');
 
   @ViewChild('graph1') graph1!: GraphComponent;
@@ -27,6 +28,7 @@ export class BatchInfoComponent implements OnInit {
   createChartData(timeRecordings: TimeRecording[]){
     timeRecordings.forEach(timeRecording => this.chartData.push({x: timeRecording.timeRecordingWithBatches.time, y: timeRecording.temperature}))
     timeRecordings.forEach(timeRecording => this.chartData2.push({x: timeRecording.timeRecordingWithBatches.time, y: timeRecording.viscosity}))
+    this.color = timeRecordings[0].colour
     this.graph1.render()
     this.graph2.render()
   }
