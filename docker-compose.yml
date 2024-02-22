@@ -2,7 +2,7 @@ services:
   app:
     container_name: ontwikkelstraat
     build: .
-    image: dockerontwikkelstraat
+    image: foekinator656/dockerontwikkelstraat
     ports:
       - 80:80
     expose:
@@ -12,9 +12,13 @@ services:
     depends_on:
       - backend
   backend:
-    image: dockerontwikkelstraat
+    image: foekinator656/dockerontwikkelstraat
     ports:
-      - "8080:8080"
+      - 8080:8080
+    expose:
+      - 8080
+    networks:
+      - ontwikkelstraatweb
     depends_on:
       - db
     environment:
@@ -26,8 +30,12 @@ services:
   db:
     image: "postgres:13.1-alpine"
     container_name: db
+    ports:
+      - 5432:5432
     expose:
       - 5432
+    networks:
+      - ontwikkelstraatweb
     environment:
       POSTGRES_DB: automatischefrituur
       POSTGRES_USER: postgres
