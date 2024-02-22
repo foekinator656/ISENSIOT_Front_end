@@ -1,0 +1,14 @@
+services:
+  app:
+    container_name: ontwikkelstraat
+    build: .
+    image: foekinator656/dockerontwikkelstraat
+    ports:
+      - 80:80
+    expose:
+      - 80
+    networks:
+      - ontwikkelstraatweb
+networks:
+  ontwikkelstraatweb:
+    driver: bridge
