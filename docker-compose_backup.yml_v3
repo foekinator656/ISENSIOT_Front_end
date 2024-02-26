@@ -1,0 +1,45 @@
+services:
+  app:
+    container_name: ontwikkelstraat
+    build: .
+    image: foekinator656/dockerontwikkelstraat
+    ports:
+      - 80:80
+    expose:
+      - 80
+    networks:
+      - ontwikkelstraatweb_front
+    depends_on:
+      - backend
+  backend:
+    image: foekinator656/dockerontwikkelstraat
+    ports:
+      - 8080:8080
+    expose:
+      - 8080
+    networks:
+      - ontwikkelstraatweb_front
+      - ontwikkelstraatweb_back
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/automatischefrituur
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: appeltaart
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+  db:
+    image: "postgres:13.1-alpine"
+    container_name: db
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    networks:
+      - ontwikkelstraatweb_back
+    environment:
+      POSTGRES_DB: automatischefrituur
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: appeltaart
+networks:
+  ontwikkelstraatweb_front:
+  ontwikkelstraatwe_back:

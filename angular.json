@@ -59,10 +59,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "isensiotFrontEnd:build:production"
+              "buildTarget": "isensiotFrontEnd:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
-              "buildTarget": "isensiotFrontEnd:build:development"
+              "buildTarget": "isensiotFrontEnd:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

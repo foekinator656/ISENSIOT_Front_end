@@ -16,6 +16,6 @@ RUN pwd
 RUN ls
 RUN npm run build
 FROM nginx:stable
-COPY default.conf /etc/nginx/conf.d
+# COPY default.conf /etc/nginx/conf.d
 COPY --from=build /app/dist/isensiot-front-end/browser/ /usr/share/nginx/html
 EXPOSE 80
