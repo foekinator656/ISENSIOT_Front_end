@@ -1,0 +1,1 @@
+Jar build intj: Run (boven aan) -> Run new Maven Goal -> command line type "package"

@@ -1,0 +1,19 @@
+# Maybe the database name is: automatischer_frituur?
+spring.datasource.url=jdbc:mysql://localhost:3306/automatischefrituur
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# After the first creation change the ddl-auto to "update"
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.show-sql=false
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.database=mysql
+spring.jpa.properties.database-platform=org.hibernate.dialect.MySQL5Dialect
+
+# Fill a SECRET_KEY in! example of it would be: 404E635266146E586E3272355623782F413F3345472B4B6250645367566B5970
+SECRET.KEY=
+
+# Admin Credentials, a Beautiful example would be as follows: developer@admin.nl and t7X!#3OH78cz
+EMAILS=
+PASSWORDS=

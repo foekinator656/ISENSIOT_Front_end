@@ -1,37 +1,81 @@
+#version: "3"
+#services:
+#  db:
+#    image: "postgres"
+#    container_name: db
+#    environment:
+#      POSTGRES_DB: automatischefrituur
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: appeltaart
+#    ports:
+#      - 5432:5432
+#    networks:
+#      - backdb
+#
+#  back:
+#    build:
+#      context: .
+#    image: back
+#    container_name: back
+#    ports:
+#      - 8080:8080
+#    depends_on:
+#      - db
+#    networks:
+#      - backdb
+#
+#  front:
+#    build: .
+#    image: front
+#    container_name: front
+#    ports:
+#      - 4200:4200
+#    networks:
+#      - backdb
+#
+#networks:
+#  backdb:
+
+version: '3'
 services:
-  app:
-    container_name: ontwikkelstraat
-    build: .
-    image: foekinator656/dockerontwikkelstraat
-    ports:
-      - 4200:80
-    networks:
-      - ontwikkelstraatweb_front
-    depends_on:
-      - api
-  api:
-    image: foekinator656/dockerontwikkelstraat
-    ports:
-      - 8080:80
-    networks:
-      - ontwikkelstraatweb_front
-      - ontwikkelstraatweb_back
-    depends_on:
-      - db
-    environment:
-      - DATABASE_HOST=db
-      - DATABASE_PORT=5432
   db:
-    image: "postgres:13.1-alpine"
+    image: postgres
     container_name: db
-    ports:
-      - 5432:80
-    networks:
-      - ontwikkelstraatweb_back
     environment:
       POSTGRES_DB: automatischefrituur
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: appeltaart
+    ports:
+      - 5432:5432
+    networks:
+      - backdb
+    expose:
+      - 5432
+
+  back:
+    build:
+      context: ISENSIOT_backendV2
+      dockerfile: Dockerfile-backend
+    image: backend
+    container_name: backend
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    networks:
+      - backdb
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile-frontend
+    image: frontend
+    container_name: frontend
+    ports:
+      - 4200:4200
+    networks:
+      - backdb
+
 networks:
-  ontwikkelstraatweb_front:
-  ontwikkelstraatweb_back:
+  backdb:
+    driver: bridge

@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Main-Class: hsleiden.isensiot_backend.Application
+Start-Class: hsleiden.isensiot_backend.Application
